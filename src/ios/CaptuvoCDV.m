@@ -59,7 +59,8 @@
     CDVPluginResult *result = [CDVPluginResult
                                resultWithStatus:CDVCommandStatus_OK
                                messageAsString:data];
-    
+    // keep the callback valid.
+    [result setKeepCallbackAsBool:[NSNumber numberWithBool:YES]];
     [self.commandDelegate sendPluginResult:result callbackId:self.scannerCallbackId];
 }
 
@@ -139,6 +140,8 @@
                                resultWithStatus: status ? CDVCommandStatus_OK : CDVCommandStatus_ERROR
                                messageAsString:data];
     
+    // keep the callback valid.
+    [result setKeepCallbackAsBool:[NSNumber numberWithBool:YES]];
     [self.commandDelegate sendPluginResult:result callbackId:self.msrCallbackId];
 }
 -(void)msrReady{
@@ -160,6 +163,8 @@
         //if didn't read status, send an error
         BOOL didRead = newBatteryStatus != BatteryStatusUndefined;
         
+        // keep the callback valid.
+        [result setKeepCallbackAsBool:[NSNumber numberWithBool:YES]];
         CDVPluginResult *result = [CDVPluginResult
                                    resultWithStatus: didRead ? CDVCommandStatus_OK : CDVCommandStatus_ERROR
                                    messageAsInt:status];
