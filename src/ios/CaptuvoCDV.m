@@ -60,7 +60,7 @@
                                resultWithStatus:CDVCommandStatus_OK
                                messageAsString:data];
     // keep the callback valid.
-    [result setKeepCallbackAsBool:[NSNumber numberWithBool:YES]];
+    [result setKeepCallbackAsBool:YES];
     [self.commandDelegate sendPluginResult:result callbackId:self.scannerCallbackId];
 }
 
@@ -141,7 +141,7 @@
                                messageAsString:data];
     
     // keep the callback valid.
-    [result setKeepCallbackAsBool:[NSNumber numberWithBool:YES]];
+    [result setKeepCallbackAsBool:YES];
     [self.commandDelegate sendPluginResult:result callbackId:self.msrCallbackId];
 }
 -(void)msrReady{
@@ -168,7 +168,7 @@
                                    resultWithStatus: didRead ? CDVCommandStatus_OK : CDVCommandStatus_ERROR
                                    messageAsInt:status];
         // keep the callback valid.
-        [result setKeepCallbackAsBool:[NSNumber numberWithBool:YES]];
+        [result setKeepCallbackAsBool:YES];
         [self.commandDelegate sendPluginResult:result callbackId:self.batteryCallbackId];
     }
 }
